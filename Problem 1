@@ -1,0 +1,39 @@
+import sys 
+from collections import defaultdict
+args = sys.argv[1] if len(sys.argv)>=2 else 'input'
+file = open(args).read().strip()
+
+R = []
+L = []
+count = 1
+for x in file.split():
+    if count % 2 == 0: 
+        R.append(x)
+    elif count % 2 != 0: 
+        L.append(x)
+    count+= 1
+
+def SumofPart1(R: list, L: list) -> int: 
+    L.sort()
+    R.sort()
+    total = 0
+    for x in range(len(L)):
+        total += abs(int(L[x]) - int(R[x]))
+    return total 
+    
+def SimilarityofPart2(R: list, L: list) -> int: 
+    L.sort()
+    R.sort()
+    D = defaultdict(int)
+    L_numbers = [int(x) for x in L]
+    R_numbers = [int(x) for x in R]
+    similarity_score = 0 
+    for i in L_numbers:
+        D[i]
+    for t in L_numbers: 
+        D[t] = R_numbers.count(t)
+        similarity_score += t * D.get(t)
+    return similarity_score
+        
+print("Part 1: ", SumofPart1(R, L))
+print("Part 2: ", SimilarityofPart2(R, L))
