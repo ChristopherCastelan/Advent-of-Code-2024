@@ -4,10 +4,9 @@ args = sys.argv[1] if len(sys.argv)>=2 else 'input.txt'
 file = open(args).read().strip()
 
 L, R = [], []
-for line in file:
-    x, y = (int(z) for z in line.split())
-    L.append(x)
-    R.append(y)
+x, y = (int(z) for z in file.split())
+L.append(x)
+R.append(y)
 
 def SumofPart1(R: list, L: list) -> int: 
     L.sort()
